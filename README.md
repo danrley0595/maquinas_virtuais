@@ -1,25 +1,54 @@
 Guia de Estudos: Linux e Docker
+---
 1. Comandos Essenciais do Linux
-Navegação e Visualização
-`pwd`: Mostra o caminho completo do diretório atual.
-`ls`: Lista arquivos e pastas.
-`ls -l`: Mostra lista detalhada (permissões, tamanho, data).
-`ls -la`: Mostra tudo, incluindo arquivos ocultos (que começam com `.`).
-`cd`: Troca de diretório.
-`cd pasta`: Entra na pasta especificada.
-`cd ..`: Sobe um nível (volta para a pasta anterior).
-`cd ~`: Vai direto para a pasta pessoal (home) do usuário.
-`cd -`: Alterna para o último diretório em que você estava.
-Criação, Cópia e Remoção
-`mkdir nome`: Cria uma nova pasta.
+1.1. Onde estou e o que tem aqui? (Navegação e Visualização)
+`pwd` (Print Working Directory)
+O que faz: Mostra o caminho completo da pasta onde você está agora.
+Exemplo: `pwd` -> `/home/usuario/projetos`
+`ls` (List)
+O que faz: Lista os arquivos e pastas do diretório atual.
+Variações úteis:
+`ls -l`: Mostra detalhes (permissões, dono, tamanho e data).
+`ls -la`: Mostra tudo, inclusive arquivos ocultos (que começam com `.`).
+`cd` (Change Directory)
+O que faz: Muda de pasta.
+Variações úteis:
+`cd nome_da_pasta`: Entra na pasta indicada.
+`cd ..`: Volta um nível (sobe para a pasta anterior).
+`cd ~`: Vai direto para a sua pasta pessoal (home).
+`cd -`: Volta para o último diretório que você visitou.
+---
+1.2. Criando e Apagando Pastas
+`mkdir` (Make Directory)
+O que faz: Cria uma nova pasta.
+Variações úteis:
+`mkdir projetos`: Cria a pasta `projetos`.
 `mkdir -p a/b/c`: Cria várias pastas uma dentro da outra de uma só vez.
-`rmdir nome`: Remove uma pasta vazia.
-`rm -r nome`: Remove uma pasta e todo o conteúdo dentro dela (não vai para a lixeira).
-`cp -r origem destino`: Copia uma pasta e seu conteúdo para outro local.
-`mv origem destino`: Move ou renomeia um arquivo/pasta.
-Leitura e Texto
-`echo "texto"`: Exibe uma mensagem na tela.
-`cat arquivo.txt`: Lê e exibe o conteúdo de um arquivo direto no terminal.
+`rmdir` (Remove Directory)
+O que faz: Apaga uma pasta, mas apenas se ela estiver vazia.
+Exemplo: `rmdir pasta_vazia`
+`rm -r` (Remove Recursive)
+O que faz: Apaga uma pasta e tudo o que estiver dentro dela (arquivos e subpastas).
+Atenção: No terminal do Linux não existe lixeira; apagou, sumiu.
+Exemplo: `rm -r pasta_cheia`
+---
+1.3. Copiando, Movendo e Renomeando
+`cp -r` (Copy Recursive)
+O que faz: Copia uma pasta inteira e seu conteúdo para outro lugar.
+Exemplo: `cp -r pasta_origem pasta_destino`
+`mv` (Move)
+O que faz: Serve tanto para mover quanto para renomear arquivos e pastas.
+Exemplos:
+Mover: `mv arquivo.txt /home/usuario/documentos/`
+Renomear: `mv nome_antigo.txt nome_novo.txt`
+---
+1.4. Exibindo Mensagens e Lendo Arquivos
+`echo`
+O que faz: Exibe um texto na tela do terminal.
+Exemplo: `echo "Estudando Linux e Docker"`
+`cat` (Concatenate)
+O que faz: Abre e mostra todo o conteúdo de um arquivo de texto direto no terminal.
+Exemplo: `cat anotacoes.txt`
 ---
 2. Comandos Essenciais do Docker
 Conceitos Rápidos (`run` vs `exec`)
