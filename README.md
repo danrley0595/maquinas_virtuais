@@ -1,71 +1,77 @@
 Guia de Estudos: Linux e Docker
 ---
 1. Comandos Essenciais do Linux
-   
 1.1. Onde estou e o que tem aqui? (Navegação e Visualização)
-
 `pwd` (Print Working Directory)
-
-O que faz: Mostra o caminho completo da pasta onde você está agora.
-
-Exemplo: `pwd` -> `/home/usuario/projetos`
-
+Mostra o caminho completo da pasta onde você está no momento.
+Exemplo:
+    ```bash
+    pwd
+    ```
+<br>
 `ls` (List)
-O que faz: Lista os arquivos e pastas do diretório atual.
-Variações úteis:
-`ls -l`: Mostra detalhes (permissões, dono, tamanho e data).
-
-`ls -la`: Mostra tudo, inclusive arquivos ocultos (que começam com `.`).
-
+Lista os arquivos e pastas do diretório atual.
+`ls`: Lista simples dos nomes.
+`ls -l`: Lista detalhada (mostra permissões, dono, tamanho e data).
+`ls -la`: Lista tudo, incluindo arquivos ocultos (que começam com ponto `.`).
+<br>
 `cd` (Change Directory)
-O que faz: Muda de pasta.
-Variações úteis:
-
-`cd nome_da_pasta`: Entra na pasta indicada.
-
-`cd ..`: Volta um nível (sobe para a pasta anterior).
-
+Serve para entrar ou sair de pastas.
+`cd nome_da_pasta`: Entra na pasta escolhida.
+`cd ..`: Sobe um nível (volta para a pasta anterior).
 `cd ~`: Vai direto para a sua pasta pessoal (home).
-
-`cd -`: Volta para o último diretório que você visitou.
-
+`cd -`: Volta para o último diretório em que você estava antes do atual.
 ---
-1.2. Criando e Apagando Pastas
+1.2. Criando Pastas
 `mkdir` (Make Directory)
-O que faz: Cria uma nova pasta.
-Variações úteis:
-`mkdir projetos`: Cria a pasta `projetos`.
-`mkdir -p a/b/c`: Cria várias pastas uma dentro da outra de uma só vez.
-`rmdir` (Remove Directory)
-O que faz: Apaga uma pasta, mas apenas se ela estiver vazia.
-Exemplo: `rmdir pasta_vazia`
-`rm -r` (Remove Recursive)
-O que faz: Apaga uma pasta e tudo o que estiver dentro dela (arquivos e subpastas).
-Atenção: No terminal do Linux não existe lixeira; apagou, sumiu.
-Exemplo: `rm -r pasta_cheia`
+Cria uma nova pasta no local atual.
+`mkdir projetos`: Cria a pasta chamada `projetos`.
+`mkdir -p a/b/c`: Cria várias pastas uma dentro da outra de uma única vez.
 ---
 1.3. Copiando, Movendo e Renomeando
-`cp -r` (Copy Recursive)
-O que faz: Copia uma pasta inteira e seu conteúdo para outro lugar.
-Exemplo: `cp -r pasta_origem pasta_destino`
+`cp` (Copy)
+Copia arquivos ou pastas para outro lugar.
+`cp arquivo.txt copia.txt`: Copia um arquivo.
+`cp -r pasta_origem pasta_destino`: Copia uma pasta inteira com tudo o que tem dentro (o `-r` significa recursivo).
+<br>
 `mv` (Move)
-O que faz: Serve tanto para mover quanto para renomear arquivos e pastas.
-Exemplos:
+Move um arquivo/pasta de lugar ou muda o nome dele.
 Mover: `mv arquivo.txt /home/usuario/documentos/`
 Renomear: `mv nome_antigo.txt nome_novo.txt`
 ---
-1.4. Exibindo Mensagens e Lendo Arquivos
+1.4. Apagando Arquivos e Pastas
+`rmdir` (Remove Directory)
+Apaga uma pasta somente se ela estiver totalmente vazia.
+Exemplo:
+    ```bash
+    rmdir pasta_vazia
+    ```
+<br>
+`rm` (Remove)
+Apaga arquivos e pastas permanentemente (não vai para a lixeira).
+`rm arquivo.txt`: Apaga um arquivo.
+`rm -r pasta`: Apaga uma pasta e todo o conteúdo dentro dela.
+---
+1.5. Lendo e Exibindo Textos
 `echo`
-O que faz: Exibe um texto na tela do terminal.
-Exemplo: `echo "Estudando Linux e Docker"`
+Exibe uma mensagem de texto na tela do terminal.
+Exemplo:
+    ```bash
+    echo "Olá, Linux!"
+    ```
+<br>
 `cat` (Concatenate)
-O que faz: Abre e mostra todo o conteúdo de um arquivo de texto direto no terminal.
-Exemplo: `cat anotacoes.txt`
+Abre e mostra o conteúdo completo de um arquivo de texto direto no terminal.
+Exemplo:
+    ```bash
+    cat arquivo.txt
+    ```
 ---
 2. Comandos Essenciais do Docker
 Conceitos Rápidos (`run` vs `exec`)
 `docker run`: Cria um novo contêiner a partir de uma imagem.
 `docker exec`: Entra em um contêiner que já está rodando.
+---
 Entrando no Terminal de um Contêiner
 Sistemas completos (Ubuntu/Debian):
 ```bash
@@ -83,6 +89,7 @@ Acessar um contêiner que já está rodando em segundo plano:
 ```bash
   docker exec -it alice /bin/sh
   ```
+---
 Rodando Servidor Web (Nginx) na Prática
 Para subir um site em segundo plano, liberar a porta de acesso e conectar uma pasta do seu computador:
 ```bash
@@ -96,6 +103,7 @@ Entendendo cada parte do comando:
 Atenção: Use aspas duplas sempre que o caminho tiver espaços (como `EFG Bittencourt`).
 `/usr/share/nginx/html` é a pasta padrão onde o Nginx busca o `index.html`.
 `nginx:alpine`: Nome da imagem e sua versão (tag) separadas por dois-pontos (`:`).
+---
 Dicas de Ouro e Erros Comuns
 Separador de versão: Use dois-pontos (`nginx:alpine`), nunca espaço.
 Nomes duplicados: Se tentar criar um contêiner com um nome que já existe, remova o antigo antes com `docker rm -f alice`.
