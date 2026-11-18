@@ -1,22 +1,34 @@
 Guia de Estudos: Linux e Docker
 ---
 1. Comandos Essenciais do Linux
+   
 1.1. Onde estou e o que tem aqui? (Navegação e Visualização)
+
 `pwd` (Print Working Directory)
+
 O que faz: Mostra o caminho completo da pasta onde você está agora.
+
 Exemplo: `pwd` -> `/home/usuario/projetos`
+
 `ls` (List)
 O que faz: Lista os arquivos e pastas do diretório atual.
 Variações úteis:
 `ls -l`: Mostra detalhes (permissões, dono, tamanho e data).
+
 `ls -la`: Mostra tudo, inclusive arquivos ocultos (que começam com `.`).
+
 `cd` (Change Directory)
 O que faz: Muda de pasta.
 Variações úteis:
+
 `cd nome_da_pasta`: Entra na pasta indicada.
+
 `cd ..`: Volta um nível (sobe para a pasta anterior).
+
 `cd ~`: Vai direto para a sua pasta pessoal (home).
+
 `cd -`: Volta para o último diretório que você visitou.
+
 ---
 1.2. Criando e Apagando Pastas
 `mkdir` (Make Directory)
