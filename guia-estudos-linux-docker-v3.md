@@ -191,3 +191,59 @@ docker run -d -p 8080:80 --name alice -v "/mnt/c/Users/EFG Bittencourt/huang:/us
 * **Nomes duplicados:** Se tentar criar um contêiner com um nome que já existe, remova o antigo antes com `docker rm -f alice`.
 
 * **Flags interativas:** Sempre use `-it` junto com `/bin/bash` ou `/bin/sh` para conseguir digitar comandos dentro do contêiner.
+
+
+
+
+
+
+Aula 6
+
+1 - cloudflare 
+docker run -d -p 8081:80 --name cloudflare -v "/mnt/c/Users/EFG Bittencourt/projetos/site1:/usr/share/nginx/html" nginx:alpine
+
+/mnt/c/Users/EFG Bittencourt/projetos/site1
+
+echo "cloudflared tunned" >> index.html
+
+
+http://localhost:8081/
+
+cloudflared tunnel --url http://localhost:8081
+
+
+2 - ngrok
+docker run -d -p 8082:80 --name ngrok -v "/mnt/c/Users/EFG Bittencourt/projetos/site2:/usr/share/nginx/html" nginx:alpine
+
+/mnt/c/Users/EFG Bittencourt/projetos/site2
+
+echo "ngrok tunned" >> index.html
+
+http://localhost:8082/
+
+ngrok instalar e gerar link
+
+-------------------------------------------
+
+
+3 - tailscale
+docker run -d -p 8083:80 --name tailscale -v "/mnt/c/Users/EFG Bittencourt/projetos/site3:/usr/share/nginx/html" nginx:alpine
+
+/mnt/c/Users/EFG Bittencourt/projetos/site3
+
+echo "tailscale tunned" >> index.html
+
+http://localhost:8083/
+
+tailscale instalar e gerar link
+
+
+
+
+
+
+nano script.sh
+
+cat script.sh
+
+bash script.sh
