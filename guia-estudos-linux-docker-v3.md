@@ -237,13 +237,59 @@ http://localhost:8083/
 
 tailscale instalar e gerar link
 
-
-
-
-
-
 nano script.sh
 
 cat script.sh
 
-bash script.sh
+
+bash script.
+
+
+Aula 8 - DockerFile
+
+
+1. Estrutura do Dockerfile
+
+O arquivo que serve de "receita" para criar sua imagem:
+Dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+RUN mkdir -p /var/www/uploads
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+Use o código com cuidado.
+• FROM nginx:alpine: Define a base da imagem (Nginx leve).
+• COPY . /usr/share/nginx/html: Copia seus arquivos locais para a pasta do site no container.
+• RUN mkdir -p /var/www/uploads: Executa um comando durante a criação da imagem (cria uma pasta).
+• EXPOSE 80: Informa qual porta o container utiliza.
+• CMD ["nginx", "-g", "daemon off;"]: Define o comando principal que inicia o servidor e mantém o container ativo em primeiro plano.
+
+2. Comandos Diretos
+
+
+Imagens (Receita)
+
+• Criar imagem: docker build -t imagem:tag .
+• Listar imagens: docker images
+• Apagar imagem: docker rmi imagem:tag
+
+Containers (Em execução)
+
+• Criar e iniciar: docker run -d --name nome -p 9000:80 imagem:tag
+• Ver ativos: docker ps
+• Ver todos: docker ps -a
+• Entrar no terminal: docker exec -it nome sh
+• Parar: docker stop nome
+• Apagar: docker rm -f nome
+
+Docker Hub (Nuvem)
+
+• Entrar na conta: docker login
+• Preparar nome: docker tag imagem:tag usuario/imagem:tag
+• Enviar: docker push usuario/imagem:tag
+Regra de ouro:
+• Comandos de imagem (build, rmi, push) usam imagem:tag.
+• Comandos de container (exec, stop, rm) usam o nome (ou ID).
+Você gostaria de testar seus conhecimentos com um quiz de múltipla escolha sobre esses comandos e instruções do Dockerfile?
+
